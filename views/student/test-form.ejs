@@ -1,0 +1,15 @@
+<div id = "">
+    <% for(var question in questions){ %>
+    <form action="/student/tar" method="post"></form>
+    <div class = "question">
+        <div class = "problem statement"> <%= questions[question].problemStatement%></div> 
+        <div class = "options">
+            <div> <span class="option-sequence">A.</span><%=questions[question].option1 %></div>
+            <div><span class="option-sequence">B.</span><%= questions[question].option2 %></div>
+            <div><span class="option-sequence">C.</span><%= questions[question].option3 %></div>
+            <div><span class="option-sequence">D.</span><%= questions[question].option4 %></div>
+        </div>   
+        <div class = "answer"><span>Ans.</span><%= questions[question].answer %></div>
+    </div>
+        <% } %>
+</div>

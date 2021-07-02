@@ -1,0 +1,29 @@
+
+        <a href="/admin/question-form">create Question </a>
+        <a href="/admin"> admin </a>
+
+        <form action="/admin/create-test" method="post" id = "create-test">
+            <input type="text" name="subject" placeholder="enter subject name">
+            <input type="number" name="numberOfQuestion" placeholder="enter number of question" >
+            <input type="number" name="maxMarks" placeholder="enter maximum marks" >
+            <input type="number" name="testDuration" placeholder=" enter time in minute " >
+            <div id = "questions">
+                <% let i = 1; for(var question in questions){ %>
+                    <input type="checkbox" name="question" value = <%= questions[question].id %>>
+                <div>
+                    <div class = "question">
+                        <div class = "problem statement"> <%= questions[question].problemStatement%></div> 
+                        <div class = "options">
+                            <div> <span class="option-sequence">A.</span><%=questions[question].option1 %></div>
+                            <div><span class="option-sequence">B.</span><%= questions[question].option2 %></div>
+                            <div><span class="option-sequence">C.</span><%= questions[question].option3 %></div>
+                            <div><span class="option-sequence">D.</span><%= questions[question].option4 %></div>
+                        </div>   
+                        <div class = "answer"><span>Ans.</span><%= questions[question].answer %></div>
+                    </div>
+                </div>
+                    <% } %>
+            </div>
+        <button form = "create-test" type="submit">create test</button>
+            
+        </form>

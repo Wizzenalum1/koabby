@@ -1,0 +1,18 @@
+
+        <a href="/admin/question-form"> create question </a>
+        <a href="/admin/test-creation-form"> create test </a>
+
+
+<div id = "questions">
+    <% for(var test in tests){ %>
+    <div class = "question">
+        <div class = "problem statement"> <%= tests[test].subject%></div> 
+        <div class = "options">
+            <div> <span> Number of questions in the test </span><%=tests[test].numberOfQuestion %></div>
+            <div><span>posible max marks in in the test</span><%= tests[test].maxMarks %></div>
+            <div><span> time to complete the test.</span><%= tests[test].testDuration %></div>
+        </div>   
+      
+    </div>
+        <% } %>
+</div>

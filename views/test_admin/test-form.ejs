@@ -1,0 +1,34 @@
+<main>
+    <form action="/admin/create-question" method="post">
+        
+        <div class="question">
+            <div class = "question-statement">
+                <label for="question"> Question </label>
+                <input type='text' name="problemStatement" required placeholder="write the question" >
+            </div>
+            <div class="options">
+                <div class = "option">
+                    <label for="a"> a: </label>
+                    <input type='text' name="option1" id="a" >
+                </div>
+                <div class = "option">
+                    <label for="b"> b: </label>
+                    <input type='text' name="option2" >
+                </div>
+                <div class = "option">
+                    <label for="c"> c: </label>
+                    <input type='text' name="option3" >
+                </div>
+                <div class = "option">
+                    <label for="d"> d: </label>
+                    <input type='text' name="option4" >
+                </div>
+            </div>
+            <div class = "answer">
+                <label for="ans"> answer </label>
+                <input type='text' name="answer" id="ans" >
+            </div>
+        </div>
+        <div><button type="submit">Submit</button></div>
+    </form>
+</main>
