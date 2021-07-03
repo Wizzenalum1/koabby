@@ -6,6 +6,7 @@
 <div id = "questions">
     <% for(var test in tests){ %>
     <div class = "question">
+        <h1><%= tests[test].title%></h1>
         <div class = "problem statement"> <%= tests[test].subject%></div> 
         <div class = "options">
             <div> <span> Number of questions in the test </span><%=tests[test].numberOfQuestion %></div>

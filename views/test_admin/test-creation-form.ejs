@@ -3,13 +3,14 @@
         <a href="/admin"> admin </a>
 
         <form action="/admin/create-test" method="post" id = "create-test">
+            <input type="text" name="title" placeholder="enter title for test">
             <input type="text" name="subject" placeholder="enter subject name">
             <input type="number" name="numberOfQuestion" placeholder="enter number of question" >
             <input type="number" name="maxMarks" placeholder="enter maximum marks" >
             <input type="number" name="testDuration" placeholder=" enter time in minute " >
             <div id = "questions">
                 <% let i = 1; for(var question in questions){ %>
-                    <input type="checkbox" name="question" value = <%= questions[question].id %>>
+                    <input type="checkbox" name="questions" value = <%= questions[question].id %>>
                 <div>
                     <div class = "question">
                         <div class = "problem statement"> <%= questions[question].problemStatement%></div> 

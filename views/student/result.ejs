@@ -1,0 +1,15 @@
+<div id = "student-questions">
+    <div> Total correct = <%= responce.correct %>, Total attempts = <%= responce.attempted %> </div>
+    <% let questions = test.questions, i = 1; for(var question in questions){ %>
+    <div class = "question">
+        <div class = "problem statement"><span><%= i++ %>.</span> <%= questions[question].problemStatement%></div> 
+        <div class = "options">
+            <div> <span class="option-sequence">A.</span><%=questions[question].option1 %></div>
+            <div><span class="option-sequence">B.</span><%= questions[question].option2 %></div>
+            <div><span class="option-sequence">C.</span><%= questions[question].option3 %></div>
+            <div><span class="option-sequence">D.</span><%= questions[question].option4 %></div>
+            <div>ans is (<%=questions[question].answer %>) and your answer is(<% if(responce[question]==0){%> <%= "none" %> <% }else{ %><%= responce.answer[question] %> <% } %>) </div>
+        </div>   
+    </div>
+        <% } %>
+</div>

@@ -4,13 +4,13 @@ const expressLayout = require('express-ejs-layouts');
 const path = require('path'); // to save problems due to relative problems 
 
 const app = express();
-const port = 8080;
+const port = 8000;
 
 const db = require('./config/mongoose');
 
 // at starts meddle ware to see whcih request is called for.
 app.use(function(req,res,next){
-  console.log("with method : ",req.method,"   request to :",req.url);
+  console.log("*****************method: ",req.method," request to :",req.url);
   next();
 })
 

@@ -1,20 +1,23 @@
 body{
-    margin:50px;
+    margin:30px 0px;
     color:rgb(204, 192, 192);
-    font-size:1.5rem;
+    font-size:1.2rem;
     background-color: rgb(75, 11, 75);    
 }
 input,button,label{
-    font-size: 1em;
+    font-size: 1.2em;
     padding:5px 10px;
 }
 a{
     text-decoration: none;
     color:yellowgreen;
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: bolder;
     margin:20px;
     text-transform: uppercase;
+    background-color: rgb(10, 41, 41);
+    padding: 5px 10px;
+    box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.61);
 }
 nav{
     margin:50px 0px;
@@ -32,14 +35,25 @@ span{
     gap:30px;
     align-items: center;
 }
+#student-questions{
+    display: grid;
+    grid-template-columns:1fr;
+    gap:10px;
+    align-items: center;
+}
 .question{
     color:burlywood;
     padding: 10px 30px;
     border-radius: 20px;
-    background-color: rgb(6, 37, 37);
+    background-color: rgb(17, 20, 20);
     box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.233);
+    font-size: 1.2em;
 }
 #questions input{
     width:50px;
     height:50px;
+}
+.radio{
+    width:20px;
+    height:20px;
 }

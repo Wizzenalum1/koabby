@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const TestModel  = mongoose.model("TestModel",
     new mongoose.Schema({
+        title:String,
         subject:String,
         numberOfQuestion:Number,
         maxMarks:Number,

@@ -1,15 +1,19 @@
-<div id = "">
-    <% for(var question in questions){ %>
-    <form action="/student/tar" method="post"></form>
+<div id = "student-questions">
+    <form action="/student/create-test-responce" method="post">
+    <% let questions = test.questions, i = 1; for(var question in questions){ %>
     <div class = "question">
-        <div class = "problem statement"> <%= questions[question].problemStatement%></div> 
+        <div class = "problem statement"> <span><%= i++ %>.</span><%= questions[question].problemStatement%></div> 
         <div class = "options">
-            <div> <span class="option-sequence">A.</span><%=questions[question].option1 %></div>
-            <div><span class="option-sequence">B.</span><%= questions[question].option2 %></div>
-            <div><span class="option-sequence">C.</span><%= questions[question].option3 %></div>
-            <div><span class="option-sequence">D.</span><%= questions[question].option4 %></div>
+            <div> <input type="radio" name="<%=question%>" value="1" class = "radio"><span class="option-sequence">A.</span><%=questions[question].option1 %></div>
+            <div><input type="radio" name="<%=question%>" value="2" class = "radio"><span class="option-sequence">B.</span><%= questions[question].option2 %></div>
+            <div><input type="radio" name="<%=question%>" value="3" class = "radio"><span class="option-sequence">C.</span><%= questions[question].option3 %></div>
+            <div><input type="radio" name="<%=question%>" value="4" class = "radio"><span class="option-sequence">D.</span><%= questions[question].option4 %></div>
+            <div><input type="radio" name="<%=question%>" value="0" checked class = "radio"><span class="option-sequence">E.</span>not giving answer</div>
         </div>   
-        <div class = "answer"><span>Ans.</span><%= questions[question].answer %></div>
     </div>
         <% } %>
+        <input type="hidden" name="duration" value="60">
+        <input type="hidden" name="id" value=<%= test._id %>>
+        <button type="submit">submit test</button>
+    </form>
 </div>

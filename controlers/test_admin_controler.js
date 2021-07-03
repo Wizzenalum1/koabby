@@ -64,7 +64,7 @@ module.exports.questionForm = function(req,res){
     context = {
         title:"question form",
     }
-    return res.render('test_admin/test-form',context);
+    return res.render('test_admin/question-form',context);
 }
 
 module.exports.createQuestion = function(req,res){
