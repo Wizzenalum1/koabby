@@ -1,9 +1,8 @@
-<a href="/student/test-form"> start test </a>
-<a href="/student/test-analysis"> anaylise test 1 </a>
-
+<a > start test </a>
+<a > anaylise test 1 </a>
 <div id = "student-questions">
     <% for(var test in tests){ %>
-    <a href="/student/test/?id=<%= tests[test].id %>" class = "question">
+    <a href="/response/creation-form/?id=<%= tests[test].id %>" class = "question">
         <h1><%= tests[test].title%></h1>
         <div class = "problem statement"> <%= tests[test].subject%></div> 
         <div class = "options">

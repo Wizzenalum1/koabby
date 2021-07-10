@@ -2,7 +2,7 @@ const TestModel = require('./test_model');
 
 const mongoose = require('mongoose');
 
-const TestResponceModel  = mongoose.model("TestResponceModel",
+const ResponseModel  = mongoose.model("TestResponceModel",
     new mongoose.Schema({
         title:String,
         answer:[],
@@ -16,4 +16,4 @@ const TestResponceModel  = mongoose.model("TestResponceModel",
     })
 );
 
-module.exports = TestResponceModel;
+module.exports = ResponseModel;

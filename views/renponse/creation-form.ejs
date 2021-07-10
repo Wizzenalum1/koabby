@@ -1,5 +1,5 @@
 <div id = "student-questions">
-    <form action="/student/create-test-responce" method="post">
+    <form action="/response/create" method="post">
     <% let questions = test.questions, i = 1; for(var question in questions){ %>
     <div class = "question">
         <div class = "problem statement"> <span><%= i++ %>.</span><%= questions[question].problemStatement%></div> 

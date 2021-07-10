@@ -1,22 +1,13 @@
-const {QuestionModel,TestModel,TestResponceModel} = require('../models')
-module.exports.dashboard = function(req,res){
-    TestModel.find(function(err,tests){
-        if(err){
-            console.log(`during searching the test in student ${err}`);
-            return;
-        }
-        console.log(`total number of tests are ** ${tests.length} **`);
-        context = {
-            title:"student test",
-            tests:tests,    
-        }
-        return res.render('student/student-dashboard',context);
-    })
-    
-}
-
-
-module.exports.test = function(req,res){
+/*  it will have controllers to following functionalities
+        1. show test attemp form
+        2. create response
+        3. show test response
+    ALL OF IT WITH AUTHORIZATION.
+*/
+require('../routes/response_route');
+// delete routes above me
+const {TestModel, ResponseModel} = require('../models')
+module.exports.creationForm = function(req,res){
     console.log(`query is ** ${req.query.id} **`);
     TestModel.findById(req.query.id).populate('questions').exec(function(err,test){
         if(err){
@@ -29,15 +20,15 @@ module.exports.test = function(req,res){
                 test:test,
                 
             }
-            return res.render('student/test-form',context);      
+            return res.render('renponse/creation-form',context);      
         }
     })
 }
-module.exports.createTestResponce = function(req,res){
+module.exports.create = function(req,res){
     console.log(req.body);
     TestModel.findById(req.body.id).populate('questions').exec(function(err,test){
         if(err){
-            console.log(`during searching test create test responce ERROR is ${err}`);
+            console.log(`during searching test create test response ERROR is ${err}`);
             return;
         }
         if(test){
@@ -51,35 +42,32 @@ module.exports.createTestResponce = function(req,res){
                     }
                 }
             }
-            TestResponceModel.create({title:test.title,answer:arr,test:req.body.id,attempted:attempted,correct:correct,duration:req.body.duration}, function(err, responce){
+            ResponseModel.create({title:test.title,answer:arr,test:req.body.id,attempted:attempted,correct:correct,duration:req.body.duration}, function(err, response){
                 if(err){
-                    console.log(`during creation of the responce error occured ${err}`);
+                    console.log(`during creation of the response error occured ${err}`);
                     return;
                 }
-                console.log(`responce is ** ${responce} ** `);
-                return res.redirect(`/student/result/?id=${responce._id}`);
+                console.log(`response is ** ${response} ** `);
+                return res.redirect(`/response/show/?id=${response._id}`);
             })
-            // return res.redirect("back");// errors
 
         }
-        // console.log(`test is empty`);//erroers
-        // return res.redirect("back");//errore
 
     })
 
 }
 
 
-module.exports.testResult = function(req,res){
+module.exports.show = function(req,res){
     console.log(req.query.id);
-    TestResponceModel.findById(req.query.id,function(err,responce){
+    ResponseModel.findById(req.query.id,function(err,response){
         if(err){
-            console.log(`error in finding responce ERROR : ${err}`);
+            console.log(`error in finding response ERROR : ${err}`);
             return;
-        }if(responce){
-            console.log(`found responce is found **${responce.title}** which has test id **${responce.test}**`);
+        }if(response){
+            console.log(`response is found **${response.title}** found **${response.id}** which has test id **${response.test}**`);
 
-            TestModel.findById(responce.test).populate('questions').exec(function(err,test){
+            TestModel.findById(response.test).populate('questions').exec(function(err,test){
                 if(err){
                     console.log(`error in finding test in test ERROR : ${err}`);
                     return;
@@ -88,16 +76,16 @@ module.exports.testResult = function(req,res){
                     context = {
                         title:"test time",
                         test:test,
-                        responce:responce,
+                        response:response,
                     }
-                    return res.render('student/result',context);      
+                    return res.render('renponse/response',context);      
                 }
                 // console.log("test is empty");//error
                 // return res.redirect("back");//error
             })    
         
         }
-        // console.log("responce is empty");//error
+        // console.log("response is empty");//error
         // return res.redirect("back");//error
     })
 }
